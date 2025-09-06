@@ -1,7 +1,8 @@
-interface IAuth {
-  fullname: string;
-  password: string;
-  email: string;
+import { Types } from "mongoose";
+
+interface IAuthToken {
+    id: Types.ObjectId,
+    role: "employer" | "job-seeker" | "agent"
 }
 
-export { IAuth };
+export { IAuthToken };
