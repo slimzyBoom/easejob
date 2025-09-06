@@ -1,0 +1,1 @@
+import type { IAuth } from "./auth.types";
