@@ -1,8 +1,10 @@
-import { Types } from "mongoose";
-
-interface IAuthToken {
+import { Types } from "mongoose"
+export interface IAuthToken {
     id: Types.ObjectId,
     role: "employer" | "job-seeker" | "agent"
 }
 
-export { IAuthToken };
+export interface ILoginUser {
+    email: string,
+    password: string
+}

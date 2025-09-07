@@ -5,6 +5,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import corsOptions from "./config/cors.config";
 import connectDB from "./config/db.config";
+
+import authRouter from "./auth/auth.route";
 const app = express();
 
 connectDB();
@@ -15,6 +17,8 @@ app.use(morgan(process.env.NODE_ENV === "development" ? "dev" : "common"));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/auth", authRouter);
 
 app.get("/", (_req: Request, res: Response) => {
   res.json({ message: "Hello World" });

@@ -1,5 +1,5 @@
 import express from "express";
-import { createUser } from "./auth.controller";
+import { createUser, loginUser } from "./auth.controller";
 import { validationSchema } from "../common/middlewares/validate-credential.middleware";
 import {
   createUserJoi,
@@ -11,3 +11,7 @@ import {
 const router = express.Router();
 
 router.post("/register", validationSchema(createUserJoi, "body"), createUser);
+
+router.post("/login", validationSchema(loginUserJoi, "body"), loginUser);
+
+export default router;
