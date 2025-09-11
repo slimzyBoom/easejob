@@ -27,8 +27,9 @@ export const createUser: RequestHandler = async (req, res) => {
     });
 
     res.cookie("token", refreshToken, {
-      secure: true,
+      secure: process.env.NODE_ENV ? true : false,
       sameSite: "none",
+      httpOnly: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -51,7 +52,7 @@ export const loginUser: RequestHandler = async (req, res) => {
     foundUser.password
   );
   if (!comparePassword) {
-    res.status(401).json({ message: "Invalid password" });
+    res.status(400).json({ message: "Invalid password" });
     return;
   }
   const { accessToken, refreshToken } = generateTokens({
@@ -60,7 +61,8 @@ export const loginUser: RequestHandler = async (req, res) => {
   });
 
   res.cookie("token", refreshToken, {
-    secure: true,
+    secure: process.env.NODE_ENV ? true : false,
+    httpOnly: true,
     sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
