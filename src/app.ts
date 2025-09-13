@@ -7,6 +7,7 @@ import corsOptions from "./config/cors.config";
 import connectDB from "./config/db.config";
 import passport from "passport";
 import "./auth/strategy/google.strategy";
+import "./auth/strategy/facebook.strategy"
 
 import authRouter from "./auth/auth.route";
 const app = express();

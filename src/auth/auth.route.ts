@@ -25,4 +25,10 @@ router.get("/google", passport.authenticate("google", {
 
 router.get("/google/callback", passport.authenticate("google", { session: false }), handleOauth)
 
+router.get("/facebook", passport.authenticate("facebook", {
+  scope: ["email", "public_profile"]
+}))
+
+router.get("/facebook/callback", passport.authenticate("facebook", { session: false }), handleOauth)
+
 export default router;
