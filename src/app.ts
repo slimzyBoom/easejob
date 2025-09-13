@@ -5,6 +5,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import corsOptions from "./config/cors.config";
 import connectDB from "./config/db.config";
+import passport from "passport";
+import "./auth/strategy/google.strategy";
 
 import authRouter from "./auth/auth.route";
 const app = express();
@@ -17,6 +19,7 @@ app.use(morgan(process.env.NODE_ENV === "development" ? "dev" : "common"));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(passport.initialize());
 
 app.use("/auth", authRouter);
 

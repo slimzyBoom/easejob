@@ -4,7 +4,3 @@ export interface IAuthToken {
     role: "employer" | "job-seeker" | "agent"
 }
 
-export interface ILoginUser {
-    email: string,
-    password: string
-}

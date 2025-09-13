@@ -20,8 +20,8 @@ const UserSchema = new Schema<IUserDocument>({
   },
   role: {
     type: String,
-    required: true,
     enum: ["employer", "job-seeker", "agent"],
+    default: null
   },
 });
 
