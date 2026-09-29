@@ -1,7 +1,9 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { IUser } from "./users.types";
 
-export interface IUserDocument extends Document, IUser {}
+export interface IUserDocument extends Document, IUser {
+  _id: mongoose.Types.ObjectId
+}
 
 const UserSchema = new Schema<IUserDocument>({
   fullname: {
@@ -11,14 +13,15 @@ const UserSchema = new Schema<IUserDocument>({
   email: {
     type: String,
     required: true,
+    unique: true
   },
   password: {
     type: String,
   },
   role: {
     type: String,
-    required: true,
     enum: ["employer", "job-seeker", "agent"],
+    default: null
   },
 });
 
